@@ -66,13 +66,13 @@ function requestHandler(req, res)
       for(var i in query['grades'])
       {
         sum = sum+parseInt(query['grades'][i]);
-        if(Math.min(query['grades'][i])>min)
+        if(query['grades'][i] < min)
         {
-          min = Math.min(query['grades'][i]);
+          min = query['grades'][i];
         }
-        if(Math.max(query['grades'][i])<max)
+        if(query['grades'][i] > max)
         {
-          max = Math.max(query['grades'][i]);
+          max = query['grades'][i];
         }
       }
       res.write('<pre> Ave: '+(sum/query['grades'].length)+' Min: '+min+' Max: '+max+'</pre>');
